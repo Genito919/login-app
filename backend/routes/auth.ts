@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { pool } from "../db.ts";
+import { pool } from "../db.js";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ router.post("/login", async (req, res) => {
     res.json({ message: "Datos guardados" });
   } catch (error) {
     console.log("ERROR DB:", error);
-    res.json({ message: "ok (sin DB)" }); // 🔥 no rompe
+    res.json({ message: "ok (sin DB)" });
   }
 });
 
