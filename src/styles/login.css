@@ -1,0 +1,289 @@
+/* =========================
+   FONT
+========================= */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+/* =========================
+   GLOBAL
+========================= */
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  background: #f1f3f4;
+  color: #202124;
+}
+
+/* =========================
+   PAGE
+========================= */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   BOX
+========================= */
+.box {
+  width: 960px;
+  max-width: 100%;
+  padding: 48px 56px;
+
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+
+  box-sizing: border-box;
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+.left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* LOGO */
+.logo {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* TITLE */
+.left h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* SLOT sincronizado */
+.left-slot {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* SUB */
+.sub {
+  font-size: 14px;
+  color: #5f6368;
+  margin: 0;
+}
+
+/* EMAIL CHIP */
+.email-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 20px;
+
+  font-size: 14px;
+  color: #202124;
+}
+
+.email-text {
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 12px;
+  color: #5f6368;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 64px;
+  min-height: 260px;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  height: 56px;
+  padding: 16px 14px;
+
+  font-size: 16px;
+
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+
+  background: transparent;
+  color: #202124;
+
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border: 2px solid #1a73e8;
+}
+
+/* LABEL */
+.input-group label {
+  position: absolute;
+  left: 14px;
+  top: 18px;
+
+  font-size: 16px;
+  color: #5f6368;
+
+  background: #ffffff;
+  padding: 0 4px;
+
+  transition: 0.18s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #1a73e8;
+}
+
+/* =========================
+   TEXTOS (ESPACIADO PRO)
+========================= */
+.link {
+  color: #1a73e8;
+  cursor: pointer;
+  font-size: 14px;
+
+  margin-top: 8px;
+}
+
+.info {
+  font-size: 13px;
+  color: #5f6368;
+  line-height: 1.4;
+
+  margin-top: 10px;
+}
+
+.info span {
+  color: #1a73e8;
+}
+
+/* CHECKBOX */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  color: #202124;
+
+  margin-top: 10px;
+}
+
+.checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: #1a73e8;
+  cursor: pointer;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: auto;      /* fija abajo */
+  padding-top: 18px;     /* aire antes de botones */
+}
+
+/* BUTTON */
+button {
+  background: #1a73e8;
+  height: 36px;
+  padding: 0 26px;
+  border-radius: 20px;
+  border: none;
+
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1669c1;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  width: 960px;
+  max-width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 40px;
+
+  font-size: 12px;
+  color: #5f6368;
+}
+
+.footer div span {
+  margin-left: 16px;
+}
+
+/* =========================
+   ERROR (CORRECTO)
+========================= */
+
+/* borde rojo */
+.input-group.error input {
+  border: 2px solid #B3261E;
+}
+
+/* label rojo SIEMPRE */
+.input-group.error label {
+  color: #B3261E !important;
+}
+
+/* label flotando arriba también rojo */
+.input-group.error input:focus + label,
+.input-group.error input:not(:placeholder-shown) + label {
+  color: #B3261E !important;
+}
+
+/* texto error */
+.error-text {
+  font-size: 12px;
+  color: #B3261E;
+  margin-top: 4px;
+}
