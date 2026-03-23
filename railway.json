@@ -1,0 +1,8 @@
+{
+  "build": {
+    "command": "echo build skipped"
+  },
+  "deploy": {
+    "startCommand": "cd backend && npx tsx server.ts"
+  }
+}
